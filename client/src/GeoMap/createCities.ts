@@ -61,7 +61,7 @@ const createTooltip = (cities: Selection<BaseType | SVGGElement, Geo.CityState, 
     .append('text')
     .attr('fill', '#FDCA40')
     .attr('font-family', 'sans-serif')
-    .attr('font-size', 12)
+    .attr('font-size', 18)
     .attr('y', -7)
     .text((topCity) => topCity.city.name)
     .attr('text-anchor', 'middle')
@@ -78,7 +78,7 @@ const createCities = (cities: Geo.CityState[], svg: d3.Selection<SVGSVGElement, 
   const text = citiesSVG
     .append('text')
     .attr('font-family', 'sans-serif')
-    .attr('font-size', 12)
+    .attr('font-size', 18)
     .text((city) => city.city.name)
 
   text

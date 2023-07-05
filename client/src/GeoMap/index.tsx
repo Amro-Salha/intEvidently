@@ -19,7 +19,7 @@ const GeoMap: FC<GeoMapProps> = (props) => {
   const [isStateHovered, setStateIsHovered] = useState(false);
 
   const draw = useCallback(async () => {
-    const { data } = axios.get("http://localhost:8331/api/map");
+    const { data } = await axios.get("http://localhost:8331/api/map");
 
     const nextStates = data.objects.states.geometries.map((state: Parameters<typeof feature>[1]) => path(feature(data, state)))
     setStates(nextStates);
@@ -30,6 +30,7 @@ const GeoMap: FC<GeoMapProps> = (props) => {
       createCities(cities, svg);
     }
   }, []);
+
 
   useEffect(() => {
     draw().catch((error) => {
@@ -55,24 +56,24 @@ const GeoMap: FC<GeoMapProps> = (props) => {
   }, []);
 
   return (
-    <svg
-      className="map"
-      ref={containerRef}
-      viewBox="0 0 1000 600"
-    >
-      <g onMouseEnter={onMouseEnterMap} onMouseLeave={onMouseLeaveMap} fill="#EFF7CF" stroke="#A53860" strokeLinejoin="round" strokeLinecap="round">
-        {states.map((state) => (
-          <path
-            key={state}
-            onMouseEnter={onMouseEnterState}
-            onMouseLeave={onMouseLeaveState}
-            fill={!isStateHovered && isMapHovered ? '#CED5B2' : "#EFF7CF"}
-            strokeWidth="1"
-            d={state}
-          />
-        ))}
-      </g>
-    </svg>
+      <svg
+        className="map"
+        ref={containerRef}
+        viewBox="0 0 1000 600"
+      >
+        <g onMouseEnter={onMouseEnterMap} onMouseLeave={onMouseLeaveMap} fill="#EFF7CF" stroke="#A53860" strokeLinejoin="round" strokeLinecap="round">
+          {states.map((state) => (
+            <path
+              key={state}
+              onMouseEnter={onMouseEnterState}
+              onMouseLeave={onMouseLeaveState}
+              fill={!isStateHovered && isMapHovered ? '#CED5B2' : "#EFF7CF"}
+              strokeWidth="1"
+              d={state}
+            />
+          ))}
+        </g>
+      </svg>
   );
 };
 
