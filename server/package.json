@@ -1,0 +1,14 @@
+{
+  "name": "@ev-interview/server",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Evidently Engineering",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "nodemon start",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

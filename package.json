@@ -1,0 +1,24 @@
+{
+  "name": "@ev-interview/root",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Evidently Engineering",
+  "license": "UNLICENSED",
+  "repository": "git@github.com:MMHQ/ev-interview.git",
+  "scripts": {
+    "start": "concurrently \"yarn workspace @ev-interview/client start\" \"yarn workspace @ev-interview/server start\"",
+    "dev": "concurrently \"yarn workspace @ev-interview/client start\" \"yarn workspace @ev-interview/server dev\""
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "dependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^2.0.22"
+  },
+  "nodemonConfig": {
+    "ignore": ["**/test/**", "**/docs/**"],
+    "delay": 2500
+  }
+}
